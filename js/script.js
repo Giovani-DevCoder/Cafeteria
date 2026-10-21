@@ -1,9 +1,4 @@
-/* =====================================================
-   Amanecer Mariara · script.js
-   ===================================================== */
-
-/* ---------- 1. Datos de productos (edita aquí) ----------
-   src: ruta de la imagen, por ejemplo "img/latte.jpg"      */
+/* ---------- 1. Datos de productos      */
 const products = [
   {n:"Latte helado de caramelo", d:"Espresso suave con caramelo y leche fría.", p:1.5, src:"./img/latteHelado.jpg"},
   {n:"Cappuccino",               d:"Clásico, con espuma cremosa y sabor intenso.", p:1.0, src:"./img/cappuccino.jpg"},
@@ -17,7 +12,7 @@ const $ = id => document.getElementById(id);
 const money = n => "$" + n.toFixed(2);
 const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-/* ---------- 2. Imágenes: aplica data-src a cada .slot ---------- */
+/* ---------- 2. Imágenes ---------- */
 function applyImages(root = document){
   root.querySelectorAll(".slot").forEach(s => {
     const src = (s.dataset.src || "").trim();
@@ -45,9 +40,9 @@ function toast(msg){
   toastTimer = setTimeout(() => t.classList.remove("on"), 2000);
 }
 
-/* ---------- 5. Pedido (se guarda en el navegador) ---------- */
+/* ---------- 5. Pedido ---------- */
 const KEY = "amanecer-pedido";
-let cart = {};                       // { indiceProducto: cantidad }
+let cart = {};
 try { cart = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (_) {}
 const save = () => { try { localStorage.setItem(KEY, JSON.stringify(cart)); } catch (_) {} };
 
